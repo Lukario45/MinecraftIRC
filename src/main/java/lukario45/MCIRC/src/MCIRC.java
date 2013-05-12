@@ -13,7 +13,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class MCIRC extends JavaPlugin {
 
     Logger log;
-
+//work fucking mother fucker!
     @Override
     public void onEnable() {
         this.log = getLogger();
