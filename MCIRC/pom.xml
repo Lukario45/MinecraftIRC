@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.zack6849</groupId>
-  <artifactId>MCIRC</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>mcirc</artifactId>
+  <version>1</version>
   <packaging>jar</packaging>
 
-  <name>MCIRC</name>
+  <name>mcirc</name>
   <url>http://maven.apache.org</url>
  <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,20 +50,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Main-Class>com.zack6849.alphabot.Bot</Main-Class>
-                            <sealed>true</sealed>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Main-Class>com.zack6849.alphabot.Bot</Main-Class>
+                            <Main-Class>lukario45.MCIRC.src.MCIRC</Main-Class>
                             <sealed>true</sealed>
                         </manifestEntries>
                     </archive>
