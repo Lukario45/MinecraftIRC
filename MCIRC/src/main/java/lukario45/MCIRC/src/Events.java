@@ -34,7 +34,7 @@ public class Events implements Listener {
         sendMessage(format);
     }
     public static void sendMessage(final String s){
-        Bukkit.getScheduler().runTaskAsynchronously(MCIRC.plugin, new Runnable(){
+        Bukkit.getScheduler().runTaskAsynchronously(this.pl, new Runnable(){
             public void run(){
                 for(Channel c : Bot.bot.getChannels()){
                     Bot.bot.sendMessage(c, s);
