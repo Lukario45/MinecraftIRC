@@ -26,11 +26,7 @@ public class Events implements Listener {
     }
     @EventHandler
     public void onChat(AsyncPlayerChatEvent p) {
-        String w = p.getPlayer().getWorld().toString();
-        String[] worldpart = w.split("=");
-        String[] worldpart2 = worldpart[1].split("}");
-        String world = worldpart2[0];
-        String format = "["+ world + "] " + p.getPlayer().getName()+ ": " + p.getMessage();
+        String format = String.format("[%s] %s: %s",p.getPlayer().getWorld().getName(), p.getPlayer().getName(), p.getMessage());
         sendMessage(format);
     }
     public static void sendMessage(final String s){
