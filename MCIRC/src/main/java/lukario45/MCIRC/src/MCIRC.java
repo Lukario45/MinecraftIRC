@@ -13,7 +13,7 @@ public class MCIRC extends JavaPlugin implements Listener {
 
     Logger log;
     public static Plugin plugin;
-//work fucking mother fucker!
+    //test
     @Override
     public void onEnable() {
         this.log = getLogger();
