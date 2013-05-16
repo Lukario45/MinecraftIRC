@@ -23,7 +23,17 @@ public class MCIRC extends JavaPlugin implements Listener {
         String name = getConfig().getString("nickname");
         String network = getConfig().getString("irc-network");
         String channels = getConfig().getString("channels");
-        Bot bot = new Bot(name, network, channels);
+        boolean isRegistered = getConfig().getBoolean("isRegistered");
+        String password;
+        if (isRegistered = true){
+            String password2 = getConfig().getString("password");
+            password = password2;
+        }
+        else {
+            String password2 = null;
+            password = password2;
+        }
+        Bot bot = new Bot(name, network, channels, isRegistered, password);
     }
 
     @Override

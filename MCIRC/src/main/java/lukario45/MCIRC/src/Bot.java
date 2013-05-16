@@ -18,11 +18,14 @@ import org.pircbotx.exception.NickAlreadyInUseException;
  */
 public class Bot {
         public static PircBotX bot;
-        public Bot(String name, String network, String channels) {
+        public Bot(String name, String network, String channels , boolean isRegistered , String password) {
         try {
             bot = new PircBotX();
             bot.setName(name);
             bot.connect(network);
+            if (isRegistered == true){
+                bot.identify(password);
+            }
             bot.getListenerManager().addListener(new Listener());
             for (String s : channels.split(" ")) {
                 bot.joinChannel("#" + s);
