@@ -7,3 +7,5 @@ channels: changeme onotherchangeme
 isRegistered: false
 ##Pass only needed if nickanme is registered
 password: changeme
+##For IRC Commands
+cmd-token: ^

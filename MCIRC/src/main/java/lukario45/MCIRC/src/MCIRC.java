@@ -13,6 +13,9 @@ public class MCIRC extends JavaPlugin implements Listener {
 
     Logger log;
     public static Plugin plugin;
+    String token = getString("cmd-token");
+    
+    
     //test
     @Override
     public void onEnable() {
@@ -39,6 +42,11 @@ public class MCIRC extends JavaPlugin implements Listener {
     @Override
     public void onDisable() { 
         Bot.quit();
+    }
+    
+    public String getString(String string){
+        string = getConfig().getString(string);
+        return string;
     }
 
    

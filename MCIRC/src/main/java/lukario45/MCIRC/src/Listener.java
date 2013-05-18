@@ -5,6 +5,7 @@
 package lukario45.MCIRC.src;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.KickEvent;
@@ -21,8 +22,37 @@ import org.pircbotx.hooks.events.QuitEvent;
 public class Listener extends ListenerAdapter {
     @Override
     public void onMessage(MessageEvent e) {
+       
+            
+        
         String format = String.format("[%s] %s: %s", e.getChannel().getName(), e.getUser().getNick(), e.getMessage());
         tellWorld(format);
+        String message = e.getMessage();
+        String token = "^";
+        if (message.startsWith(token)){
+            String command = message.split(token)[1].trim();
+            if (command.equalsIgnoreCase("kick")){
+                String[] args = message.split(" ");
+                Player p = Bukkit.getPlayer(args[0]);
+                if (p == null){
+                    Events.sendMessage(" Player not online!");
+                }
+                else{
+                    
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 2; i < args.length; i++){
+                        sb.append(args[i]).append(" ");
+                    }
+                    String reason = sb.toString().trim();
+                    IRCCommands.kick(p, reason);  
+                }
+                
+            }
+            
+        } 
+        
+         
+        
     }
     @Override
     public void onPart(PartEvent e){
@@ -67,5 +97,9 @@ public class Listener extends ListenerAdapter {
     
     public static void tellWorld(String msg){
         Bukkit.broadcastMessage(msg);
+    }
+
+    private Object getConfig() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -1,9 +1,11 @@
 ##This is Pretty Basic, just dont move stuff around ;)
 nickname: Server
-irc-network: irc.geekshed.net
+irc-network: irc.esper.net
 ##Dont add the # for the channel sperate channels with spaces 
 channels: changeme onotherchangeme
 ##On;y det to "true if nickanme is registered
 isRegistered: false
 ##Pass only needed if nickanme is registered
 password: changeme
+##For IRC Commands
+cmd-token: ^
