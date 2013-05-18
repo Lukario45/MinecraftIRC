@@ -31,25 +31,24 @@ public class Listener extends ListenerAdapter {
         String token = "^";
         if (message.startsWith(token)){
      
-            String[] args = message.substring(token.length()).trim().split(" ", 2);
+            String[] args = message.substring(token.length()).trim().split(" ", 3);
             String command = args[0];
             if (command.equalsIgnoreCase("kick")){
-                
-                Player p = Bukkit.getPlayer(args[1]);
-                if (p == null){
-                    Events.sendMessage("Player not online!");
+                if (e.getChannel().getOps().contains(e.getUser())){
+                     Player p = Bukkit.getPlayer(args[1]);
+                    if (p == null){
+                        Events.sendMessage("Player not online!");
                     
+                 }
+                 else{
+                    String reason = args[2];
+                    IRCCommands.kick(p, reason);  
+                    }
+                
                 }
                 else{
-                    
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 2; i < args.length; i++){
-                        sb.append(args[i]).append(" ");
-                    }
-                    String reason = sb.toString().trim();
-                    IRCCommands.kick(p, reason);  
+                    Events.sendMessage("You dont have the perms!");
                 }
-                
             }
             
         } 
