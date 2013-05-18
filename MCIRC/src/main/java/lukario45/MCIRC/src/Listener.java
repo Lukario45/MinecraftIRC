@@ -30,12 +30,15 @@ public class Listener extends ListenerAdapter {
         String message = e.getMessage();
         String token = "^";
         if (message.startsWith(token)){
-            String command = message.split(token)[1].trim();
+     
+            String[] args = message.substring(token.length()).trim().split(" ", 2);
+            String command = args[0];
             if (command.equalsIgnoreCase("kick")){
-                String[] args = message.split(" ");
-                Player p = Bukkit.getPlayer(args[0]);
+                
+                Player p = Bukkit.getPlayer(args[1]);
                 if (p == null){
-                    Events.sendMessage(" Player not online!");
+                    Events.sendMessage("Player not online!");
+                    
                 }
                 else{
                     

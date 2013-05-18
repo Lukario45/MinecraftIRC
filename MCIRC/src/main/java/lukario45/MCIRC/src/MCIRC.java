@@ -13,7 +13,7 @@ public class MCIRC extends JavaPlugin implements Listener {
 
     Logger log;
     public static Plugin plugin;
-    String token = getString("cmd-token");
+   
     
     
     //test
