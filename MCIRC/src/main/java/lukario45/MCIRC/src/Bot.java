@@ -1,8 +1,11 @@
 package lukario45.MCIRC.src;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.pircbotx.MultiBotManager;
+import org.pircbotx.MultiBotManager.BotBuilder;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 import org.pircbotx.exception.NickAlreadyInUseException;
@@ -17,25 +20,36 @@ import org.pircbotx.exception.NickAlreadyInUseException;
  * @author Kevin
  */
 public class Bot {
-        public static PircBotX bot;
+        public static MultiBotManager bot;
+        public static PircBotX myBots;
         public Bot(String name, String network, String channels , boolean isRegistered , String password) {
-        try {
-            bot = new PircBotX();
+             BotBuilder b;
+            try {
+            b = new BotBuilder(myBots);
+            myBots = new PircBotX();
+            bot = new MultiBotManager(myBots);
             bot.setName(name);
-            bot.connect(network);
+            
+            for (String s : network.split(" ")) {
+                bot.createBot(s);
+            }
+            for (String s : channels.split(" ")) {
+               //BotBuilder b = new BotBuilder(myBots);
+               b.addChannel("#" + s);
+               myBots.joinChannel("#" + s);
+            }
+            bot.connectAll();
             if (isRegistered == true){
-                bot.identify(password);
+                bot.setLogin(password);
             }
             bot.getListenerManager().addListener(new Listener());
-            for (String s : channels.split(" ")) {
-                bot.joinChannel("#" + s);
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         } 
     }
         public static void quit(){
-            bot.shutdown(true);
+            bot.disconnectAll();
         }
     
 }

@@ -56,8 +56,8 @@ public class Events implements Listener {
     public static void sendMessage(final String s){
         Bukkit.getScheduler().runTaskAsynchronously(pl, new Runnable(){
             public void run(){
-                for(Channel c : Bot.bot.getChannels()){
-                    Bot.bot.sendMessage(c, s);
+                for(Channel c : Bot.myBots.getChannels()){
+                    Bot.myBots.sendMessage(c, s);
                 }
             }
         });
