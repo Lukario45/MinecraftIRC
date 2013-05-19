@@ -7,12 +7,11 @@ package lukario45.MCIRC.src;
 import org.bukkit.entity.Player;
 
 /**
- *
  * @author Kevin
  */
 public class IRCCommands {
-    public static void kick(Player target, String reason){
+    public static void kick(Player target, String reason) {
         target.kickPlayer(reason);
     }
-    
+
 }

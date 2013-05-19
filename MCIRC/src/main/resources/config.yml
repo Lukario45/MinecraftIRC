@@ -1,11 +1,11 @@
-##This is Pretty Basic, just dont move stuff around ;)
+##This is Pretty Basic, just don't move stuff around ;)
 nickname: Server
 irc-network: irc.esper.net
-##Dont add the # for the channel sperate channels with spaces 
+##Dont add the # for the channel separate channels with spaces
 channels: changeme onotherchangeme
-##On;y det to "true if nickanme is registered
+##On;y det to "true if nickname is registered
 isRegistered: false
-##Pass only needed if nickanme is registered
+##Pass only needed if nickname is registered
 password: changeme
 ##For IRC Commands
 cmd-token: ^

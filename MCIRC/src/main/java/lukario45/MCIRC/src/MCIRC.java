@@ -1,6 +1,7 @@
 package lukario45.MCIRC.src;
 
 import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,9 +14,8 @@ public class MCIRC extends JavaPlugin implements Listener {
 
     Logger log;
     public static Plugin plugin;
-   
-    
-    
+
+
     //test
     @Override
     public void onEnable() {
@@ -28,11 +28,10 @@ public class MCIRC extends JavaPlugin implements Listener {
         String channels = getConfig().getString("channels");
         boolean isRegistered = getConfig().getBoolean("isRegistered");
         String password;
-        if (isRegistered = true){
+        if (isRegistered = true) {
             String password2 = getConfig().getString("password");
             password = password2;
-        }
-        else {
+        } else {
             String password2 = null;
             password = password2;
         }
@@ -40,16 +39,14 @@ public class MCIRC extends JavaPlugin implements Listener {
     }
 
     @Override
-    public void onDisable() { 
+    public void onDisable() {
         Bot.quit();
     }
-    
-    public String getString(String string){
+
+    public String getString(String string) {
         string = getConfig().getString(string);
         return string;
     }
 
-   
-    
-    
+
 }
