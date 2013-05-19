@@ -1,57 +1,40 @@
 package lukario45.MCIRC.src;
 
-import java.io.IOException;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.pircbotx.MultiBotManager;
-import org.pircbotx.MultiBotManager.BotBuilder;
 import org.pircbotx.PircBotX;
-import org.pircbotx.exception.IrcException;
-import org.pircbotx.exception.NickAlreadyInUseException;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+import org.pircbotx.hooks.managers.ThreadedListenerManager;
 
 /**
  * @author Kevin
  */
 public class Bot {
-    public static MultiBotManager bot;
-    public static PircBotX myBots;
+    public static MultiBotManager bots;
+    public static PircBotX bot;
+    public static String channels;
+    public static boolean isRegistered;
+    public static String password;
 
-    public Bot(String name, String network, String channels, boolean isRegistered, String password) {
-        BotBuilder b;
+    public static void quit() {
+        bots.disconnectAll();
+    }
+
+    public static void setup(String name, String network, String channels, boolean isRegistered, String password) {
+        bot = new PircBotX();
+        Bot.channels = channels;
+        Bot.isRegistered = isRegistered;
+        Bot.password = password;
         try {
-            b = new BotBuilder(myBots);
-            myBots = new PircBotX();
-            bot = new MultiBotManager(myBots);
-            bot.setName(name);
-
+            bots = new MultiBotManager(bot);
             for (String s : network.split(" ")) {
-                bot.createBot(s);
+                bots.createBot(s);
             }
-            for (String s : channels.split(" ")) {
-                //BotBuilder b = new BotBuilder(myBots);
-                b.addChannel("#" + s);
-                myBots.joinChannel("#" + s);
-            }
-            bot.connectAll();
-            if (isRegistered == true) {
-                bot.setLogin(password);
-            }
-            bot.getListenerManager().addListener(new Listener());
-
+            bots.setName(name);
+            bots.setListenerManager(new ThreadedListenerManager());
+            bots.getListenerManager().addListener(new Listener());
+            bots.connectAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void quit() {
-        bot.disconnectAll();
     }
 
 }

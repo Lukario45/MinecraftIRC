@@ -24,18 +24,12 @@ public class MCIRC extends JavaPlugin implements Listener {
         this.saveDefaultConfig();
         Bukkit.getPluginManager().registerEvents(new Events(plugin), plugin);
         String name = getConfig().getString("nickname");
-        String network = getConfig().getString("irc-network");
+        String networks = getConfig().getString("irc-network");
         String channels = getConfig().getString("channels");
         boolean isRegistered = getConfig().getBoolean("isRegistered");
         String password;
-        if (isRegistered = true) {
-            String password2 = getConfig().getString("password");
-            password = password2;
-        } else {
-            String password2 = null;
-            password = password2;
-        }
-        Bot bot = new Bot(name, network, channels, isRegistered, password);
+        password = getConfig().getString("password");
+        Bot.setup(name, networks, channels, isRegistered, password);
     }
 
     @Override
@@ -44,8 +38,7 @@ public class MCIRC extends JavaPlugin implements Listener {
     }
 
     public String getString(String string) {
-        string = getConfig().getString(string);
-        return string;
+        return getConfig().getString(string);
     }
 
 
